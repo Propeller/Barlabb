@@ -1,7 +1,10 @@
-class Landlord {
-    public op void start_read();
-
-    public void boolean run(){
-        inni 
-    }
+class Landlord
+{
+  private Clock clock;
+  
+  public Landlord(Clock clock)
+  {
+    this.clock = clock;
+    System.out.println(clock.getTime());
+  }
 }

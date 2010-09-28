@@ -2,6 +2,7 @@ public class Main
 {
   public static void main(String[] args)
   {
-    System.out.println("Hello, world!");
+    Clock watch = new Clock(10, new MyTime(0, 3, 20));
+    Landlord rolf = new Landlord(watch);
   }
 }
