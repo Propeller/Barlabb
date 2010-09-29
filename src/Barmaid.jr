@@ -1,0 +1,12 @@
+public class Barmaid implements Runnable
+{
+  Bar bar; // Bar barbarbarbarbar bar bar barbarbarbarbar.
+  public Barmaid(Bar b){
+    bar = b;
+    process {
+      (new Bar()).run();
+    }
+  }
+  
+  
+}
