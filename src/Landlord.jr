@@ -5,13 +5,11 @@ class Landlord
   public op void goodbye();
   
   // Private non-operations
-  private Clock clock;
   private int population = 0;
   
   public Landlord(Clock clock)
   {
-    this.clock = clock;
-    System.out.println(clock.getTime());
+    System.out.println(Bar.clock().getTime());
   }
   
   private process mainloop
@@ -32,7 +30,7 @@ class Landlord
         if (--population == 0)
         {
           System.out.println("OMGWTFBBQ");
-          clock.shutdown();
+          Bar.clock().shutdown();
           break;
         }
       }

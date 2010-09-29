@@ -6,12 +6,17 @@ public class Bar implements Runnable
   // Read-only variables
   private static Clock watch;
   
+  // Accessors
+  public static Clock clock()
+  { return watch; }
+  
+  
   /**
    * Runs the simulation!
    */
   public void run()
   {
-    watch = new Clock(10, new MyTime(0, 3, 20));
+    this.watch = new Clock(10, new MyTime(0, 3, 20));
     Landlord rolf = new Landlord(watch);
     
     for (int i = 0; i < 5; ++i)
