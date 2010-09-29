@@ -7,7 +7,7 @@ class Landlord
   // Private non-operations
   private int population = 0;
   
-  public Landlord(Clock clock)
+  public Landlord()
   {
     System.out.println(Bar.clock().getTime());
   }
