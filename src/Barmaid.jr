@@ -1,12 +1,21 @@
-public class Barmaid implements Runnable
+class Barmaid
 {
-  Bar bar; // Bar barbarbarbarbar bar bar barbarbarbarbar.
-  public Barmaid(Bar b){
-    bar = b;
-    process {
-      (new Bar()).run();
-    }
+  // Operations
+  public op void timetogohome();
+  
+  public Barmaid()
+  {
+    Bar.clock.setAlarmEndTime(timetogohome);
   }
   
-  
+  private process mainloop
+  {
+    while (true)
+    {
+      /**
+       * Serve
+       */
+      // TODO
+    }
+  }
 }
