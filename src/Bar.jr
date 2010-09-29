@@ -1,15 +1,27 @@
 public class Bar implements Runnable
 {
   public static void main(String[] args)
-  { (new Bar()).run(); }
+  { Bar.getInstance().run(); }
   
-  // Read-only variables
+  // Almighty time… read only for safety against time paradox!
   private static Clock watch;
-  
-  // Accessors
   public static Clock clock()
   { return watch; }
   
+  /**
+   * Retrieve the Bar instance, or create a new one if one does not already
+   * exist!
+   */
+  public static Bar instance;
+  public static Bar getInstance()
+  {
+    if (instance == null) instance = new Bar();
+    return instance;
+  }
+  
+  // Operations (channels)
+  public op void hello();
+  public op void goodbye();
   
   /**
    * Runs the simulation!
@@ -17,11 +29,9 @@ public class Bar implements Runnable
   public void run()
   {
     this.watch = new Clock(10, new MyTime(0, 3, 20));
-    Landlord rolf = new Landlord();
     
-    for (int i = 0; i < 5; ++i)
-    {
-      new Customer(rolf);
-    }
+    new Landlord();
+    
+    for (int i = 0; i < 5; ++i) { new Customer(); }
   }
 }
