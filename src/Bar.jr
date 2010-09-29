@@ -1,0 +1,22 @@
+public class Bar implements Runnable
+{
+  public static void main(String[] args)
+  { (new Bar()).run(); }
+  
+  // Read-only variables
+  private static Clock watch;
+  
+  /**
+   * Runs the simulation!
+   */
+  public void run()
+  {
+    watch = new Clock(10, new MyTime(0, 3, 20));
+    Landlord rolf = new Landlord(watch);
+    
+    for (int i = 0; i < 5; ++i)
+    {
+      new Customer(rolf);
+    }
+  }
+}
