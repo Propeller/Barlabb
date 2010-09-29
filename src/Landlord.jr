@@ -7,24 +7,26 @@ class Landlord
   // Private non-operations
   private int population = 0;
   
-  public Landlord(Clock clock)
+  public Landlord()
   {
-    System.out.println(Bar.clock().getTime());
+    System.out.println("Landlord alive: " + Bar.clock().getTime());
   }
   
   private process mainloop
   {
+    Bar bar = Bar.getInstance();
+    
     while (true)
     {
       /**
        * Person enters/leaves bar (customer/barmaid/assistant)
        */
-      inni void hello()
+      inni void bar.hello()
       {
         System.out.println("HAI U");
         population++;
       }
-      [] void goodbye()
+      [] void bar.goodbye()
       {
         System.out.println("BAI U");
         if (--population == 0)

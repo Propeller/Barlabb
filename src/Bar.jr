@@ -19,6 +19,10 @@ public class Bar implements Runnable
     return instance;
   }
   
+  // Operations (channels)
+  public op void hello();
+  public op void goodbye();
+  
   /**
    * Runs the simulation!
    */

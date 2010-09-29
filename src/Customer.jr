@@ -1,16 +1,13 @@
+import edu.ucdavis.jr.*;
+
 public class Customer
-{
-  private Landlord rolf;
-  
-  public Customer(Landlord landlord)
-  {
-    rolf = landlord;
-  }
-  
+{  
   private process mainloop
   {
-    send rolf.hello();
-    edu.ucdavis.jr.JR.nap(1000);
-    send rolf.goodbye();
+    Bar bar = Bar.getInstance();
+    
+    send bar.hello();
+    JR.nap(3000);
+    send bar.goodbye();
   }
 }
