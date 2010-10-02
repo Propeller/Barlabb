@@ -1,0 +1,10 @@
+## Life of a Customer
+1) (new Customer).enters Pub.getInstance()
+2) -> pub.greet()
+3) -> pub.order(new Drink)
+4) -> pub.tables.random.visit()
+5) -> drink.drink()
+   ~> last call ? drink.heave!
+6) -> table.put drink
+7) not finished ? 3)
+8) -> Customer.leaves(pub)
