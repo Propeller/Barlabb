@@ -1,24 +1,35 @@
-class Table {
-  private static void op empty();
-  private static void op full(Drink drink);
+import java.util.*;
+
+class Table
+{
+  private static op void empty();
+  private static op void full(Drink drink);
   
   public static final int SPACES = 1; 
   
   static 
   {
-    for (i=0; i<SPACES; i++) 
+    for (int i=0; i<SPACES; i++) 
     {
       send empty();
     }
   }
   
-  public place_drink(Drink drink)
+  public void put(Drink drink)
   {
-    recive empty();
+    receive empty();
     send full(drink);
   }
   
-  public List<Drink> take_drinks(){
-    
+  public List<Drink> takeAll(){
+    List<Drink> list = new ArrayList();
+    while(full.length() > 0)
+    {
+      Drink drink;
+      receive full(drink);
+      list.add(drink);
+      send empty();
+    }
+    return list;
   }
 }
