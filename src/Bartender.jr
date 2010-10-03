@@ -9,40 +9,34 @@ class Bartender
   {
     if (drink instanceof Beer)
     {
+      receive Bardisk.glass();
       receive Bardisk.beer_tap();
-      Logger.log("*bartending (mixing beer)*");
+      Logger.log(this + ": *bartending (mixing beer)*");
       
       JR.nap(6); // 30 seconds
       
       // Filling glass
     }
-    else if (drink instanceof Coffee)
+    else
     {
-      Logger.log("Bartender: acquiring milk");
-      receive Bardisk.milk();
-      Logger.log("Bartender: acquiring coffee");
-      receive Bardisk.coffee();
-      Logger.log("*bartending (mixing coffee)*");
+      boolean coffee = drink instanceof Coffee;
       
-      JR.nap(10); // 50 seconds
+      Logger.log(this + ": acquiring milk");
+      receive Bardisk.milk();
+      if (coffee) Bardisk.coffee();
+      else receive Bardisk.chocolate();
+      
+      Logger.log(this + ": acquiring cup");
+      receive Bardisk.cup();
+      
+      Logger.log(this + ": *bartending (mixing " + drink + ")*");
+      JR.nap(coffee ? 10 : 4); // 50 seconds
       
       send Bardisk.milk();
-      send Bardisk.coffee();
+      if (coffee) send Bardisk.coffee();
+      else send Bardisk.chocolate();
     }
-    else if (drink instanceof Chocolate)
-    {
-      Logger.log("Bartender: acquiring milk");
-      receive Bardisk.milk();
-      Logger.log("Bartender: acquiring chocolate powder");
-      receive Bardisk.chocolate();
-      Logger.log("*mixing chocolate*");
-      
-      JR.nap(4); // 20 seconds
-      
-      send Bardisk.milk();
-      send Bardisk.chocolate();
-    }
-    
+        
     return drink;
   }
 }
