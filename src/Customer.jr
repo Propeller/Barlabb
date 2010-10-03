@@ -41,7 +41,7 @@ public class Customer
   private op void live_life_in(Pub pub)
   {
     // Assume my favorite drink
-    favdrink = Math.random() < 0.33 ? new Beer() : (Math.random() < 0.6 ? new Coffee() : new Chocolate());
+    favdrink = Math.random() < 0.33 ? new Beer() : (Math.random() < 0.6 ? new Chocolate() : new Coffee());
     heaver   = Math.random() < 0.5;
     
     // Greet the Landlord
