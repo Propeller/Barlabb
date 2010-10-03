@@ -7,17 +7,21 @@ class Barmaid
    */
   public Barmaid()
   {
-    Logger.log("Barmaid says “Good morning y’all!'”");
     Pub.clock().setAlarmEndTime(closing_time);
+    send main_loop(Pub.getInstance());
   }
   
-  private process main_loop
+  private op void main_loop(Pub pub)
   {
+    Logger.log("Barmaid: “Good morning y’all!'”");
+    pub.hello();
+    
     while(true)
     {
       inni void closing_time()
       {
-        Logger.log("Barmaid says “Closing time. Screw you, I’m going home!”");
+        Logger.log("Barmaid: “Closing time. Screw you, I’m going home!”");
+        pub.goodbye();
         break;
       }
     }
