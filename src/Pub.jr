@@ -1,5 +1,8 @@
 public class Pub implements Runnable
 {
+  private Table[] tables;
+  public static final int TABLES = 1;
+
   public static void main(String[] args)
   { Pub.getInstance().run(); }
   
@@ -25,6 +28,11 @@ public class Pub implements Runnable
   {
     watch = new Clock(5, end_of_the_universe); // Run for an hour
     watch.setAlarmEndTime(closing_time);
+    
+    tables = new Table[TABLES];
+    for(int i=0; i<TABLES; i++){
+      tables[i] = new Table();
+    }
   }
   
   // Population control
@@ -39,6 +47,10 @@ public class Pub implements Runnable
   public static boolean closed() { return Pub.getInstance().closed; }
   private op void closing_time()
   { closed = true; }
+  
+  public Table get_table (int id){
+    return tables[id];
+  }
   
   /**
    * Runs the simulation!
