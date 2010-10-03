@@ -26,7 +26,7 @@ class Barmaid extends Bartender
         pub.goodbye();
         break;
       }
-      [] Drink pub.order_queue(Drink drink)
+      [] Drink pub.order_drink(Drink drink)
       {
         Logger.log("Barmaid: “I serve a customer.”");
         reply prepare(drink);

@@ -32,7 +32,7 @@ public class Pub implements Runnable
   public op void goodbye();
   
   public op void last_orders();
-  public op Drink order_queue(Drink drink);
+  public op Drink order_drink(Drink drink);
   
   // Have the pub closed (read-only)?
   private boolean closed = false;

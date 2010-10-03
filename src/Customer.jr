@@ -41,7 +41,7 @@ public class Customer
   {
     send pub.hello();
     JR.nap(3000);
-    Drink drink = pub.order_queue(new Beer());
+    Drink drink = pub.order_drink(new Beer());
     Logger.log("Customer: “Ah, beer! Thx!”");
     JR.nap(1000);
     send pub.goodbye();

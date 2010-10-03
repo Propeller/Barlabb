@@ -46,7 +46,7 @@ class Landlord extends Bartender
         Logger.log("Landlord: LAST DRINKS SERVING!");
         send pub.last_orders();
       }
-      [] Drink pub.order_queue(Drink drink)
+      [] Drink pub.order_drink(Drink drink)
       {
         Logger.log("Landlord: “I serve a customer.”");
         reply prepare(drink);
