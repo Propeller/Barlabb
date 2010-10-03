@@ -34,9 +34,8 @@ public class MyTime implements Cloneable {
     value++;
   }
   
-  public void decrement(int by_value) {
-    if (by_value > value) value = 0;
-    else value -= by_value;
+  public MyTime decrement(int by_value) {
+    return new MyTime(Math.max(value - by_value, 0));
   }
 
   public MyTime add(MyTime other) {
