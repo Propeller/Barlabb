@@ -28,9 +28,12 @@ class Barmaid extends Bartender
       }
       [] Drink pub.order_drink(Drink drink)
       {
-        Logger.log("Barmaid: “I serve a customer.”");
+        Logger.log("Barmaid: “I’ll serve a " + drink + ".”");
         reply prepare(drink);
       }
     }
   }
+  
+  public String toString()
+  { return "Barmaid"; }
 }

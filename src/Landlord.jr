@@ -48,9 +48,12 @@ class Landlord extends Bartender
       }
       [] Drink pub.order_drink(Drink drink)
       {
-        Logger.log("Landlord: “I serve a customer.”");
+        Logger.log("Landlord: “I’ll serve a " + drink + ".”");
         reply prepare(drink);
       }
     }
   }
+  
+  public String toString()
+  { return "Landlord"; }
 }
