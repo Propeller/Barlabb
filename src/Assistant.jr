@@ -12,6 +12,8 @@ class Assistant
     Logger.log("Assistant: “Good morning, boss!”");
     pub.hello();
     
+    pub.clock().setAlarm(wakeup, new MyTime(0));
+    
     while(true)
     {
       inni void last_cleaning()
@@ -24,9 +26,29 @@ class Assistant
       }
       [] void wakeup()
       {
-        clean();
+        clean(pub);
+      }
+      pub.clock().setAlarm(wakeup, new MyTime(15 * 60)); // Workers' union requirement
+    }
+  }
+  
+  private void clean() {
+    List drinks = new ArrayList();
+    for(i=0;i<pub.TABLES;i++){
+      pub.get_table(i).takeAll();
+    }
+    // Wash
+    int glasses, cups = 0;
+    for(Drink drink : drinks){
+      if (drink.container() instanceof Glass){
+        glasses++;
+        send Bardisk.glass();
+      } else if {
+        cups++;
+        send Bardisk.cup();
       }
     }
+    Logger.log("Assistant: “I've cleaned "+glasses+" glasses and "+cups+" cups.”");
   }
   
   
