@@ -64,18 +64,14 @@ public class Customer
       
       Logger.emote(this + " drinking " + drink + " in " + time + " seconds");
       
-      if (heaver && drinks_left > 1)
+      inni void drinking_done() {}
+      [] void pub.last_orders() st (heaver && drinks_left > 1)
       {
-        inni void drinking_done() {}
-        [] void pub.last_orders()
-        {
-          Logger.emote(this + " HEAVING");
-          drinks_left = 1;
-          send pub.last_orders(); // alert the others!
-          continue;
-        }
+        Logger.emote(this + " HEAVING");
+        drinks_left = 1;
+        send pub.last_orders(); // alert the others!
+        continue;
       }
-      else receive drinking_done();
       
       Logger.emote(this + " done drinking " + drink);
     }
