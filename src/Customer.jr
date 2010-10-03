@@ -5,6 +5,7 @@ public class Customer
   private int favtable;
   private int favdrink;
   private boolean heaver;
+  
   /**
    * Spawns a new customer which enters the pub, pretty much
    * handling himself.
@@ -40,7 +41,7 @@ public class Customer
   {
     send pub.hello();
     JR.nap(3000);
-    call pub.order_queue(new Beer());
+    Drink drink = pub.order_queue(new Beer());
     Logger.log("Customer: “Ah, beer! Thx!”");
     JR.nap(1000);
     send pub.goodbye();

@@ -49,7 +49,7 @@ class Landlord extends Bartender
       [] Drink pub.order_queue(Drink drink)
       {
         Logger.log("Landlord: “I serve a customer.”");
-        return prepare(drink);
+        reply prepare(drink);
       }
     }
   }

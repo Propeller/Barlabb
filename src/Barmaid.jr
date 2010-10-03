@@ -29,7 +29,7 @@ class Barmaid extends Bartender
       [] Drink pub.order_queue(Drink drink)
       {
         Logger.log("Barmaid: “I serve a customer.”");
-        return prepare(drink);
+        reply prepare(drink);
       }
     }
   }
