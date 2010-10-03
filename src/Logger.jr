@@ -1,0 +1,14 @@
+/**
+ * A very simple logger, logging to STDOUT with a timestamp.
+ */
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+class Logger
+{
+  public static void log(String message)
+  {
+    String stamp = Pub.clock().getTime().toString();
+    System.out.println("[" + stamp + "] " + message);
+  }
+}
