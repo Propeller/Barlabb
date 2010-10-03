@@ -28,7 +28,7 @@ class Barmaid
       }
       [] void pub.order_queue()
       {
-        Logger.log("Landlord: “I serve a customer.“");
+        Logger.log("Barmaid: “I serve a customer.“");
         JR.nap(1000);
       }
     }
