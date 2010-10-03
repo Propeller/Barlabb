@@ -19,19 +19,26 @@ public class Pub implements Runnable
     return instance;
   }
   
-  /**
-   * Spawns the clock.
-   */
+  // Set simulation time!
+  public MyTime end_of_the_universe = new MyTime(1, 0, 0);
   public Pub()
   {
-    this.watch = new Clock(50, new MyTime(0, 3, 20));
+    watch = new Clock(20, end_of_the_universe); // Run for an hour
+    watch.setAlarmEndTime(closing_time);
   }
   
   // Population control
   public op void hello();
   public op void goodbye();
   
+  public op void last_orders();
   public op void order_queue();
+  
+  // Have the pub closed (read-only)?
+  private boolean closed = false;
+  public static boolean closed() { return Pub.getInstance().closed; }
+  private op void closing_time()
+  { closed = true; }
   
   /**
    * Runs the simulation!
