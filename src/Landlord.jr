@@ -46,10 +46,10 @@ class Landlord
         Logger.log("Landlord: LAST DRINKS SERVING!");
         send pub.last_orders();
       }
-      [] void pub.order_queue()
+      [] Drink pub.order_queue(Drink drink)
       {
         Logger.log("Landlord: “I serve a customer.“");
-        JR.nap(1000);
+        reply mix(drink);
       }
     }
   }

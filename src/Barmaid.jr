@@ -26,10 +26,10 @@ class Barmaid
         pub.goodbye();
         break;
       }
-      [] void pub.order_queue()
+      [] Drink pub.order_queue(Drink drink)
       {
         Logger.log("Barmaid: “I serve a customer.“");
-        JR.nap(1000);
+        reply mix(drink);
       }
     }
   }
