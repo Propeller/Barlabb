@@ -1,0 +1,36 @@
+class Assistant
+{
+  public Assistant()
+  {
+    send main_loop(Pub.getInstance());
+  }
+  
+  public op void last_cleaning();
+  
+  private op void main_loop(Pub pub)
+  {
+    Logger.log("Assistant: “Good morning, boss!”");
+    pub.hello();
+    
+    while(true)
+    {
+      inni void last_cleaning()
+      {
+        Logger.log("Assistant: “I'll get right to it, boss!”");
+        clean(pub);
+        Logger.log("Assistant: “Everything is clean now, I go home now.”");
+        pub.goodbye();
+        break;
+      }
+      [] void wakeup()
+      {
+        clean();
+      }
+    }
+  }
+  
+  
+  
+  public String toString()
+  { return "Assistant"; }
+}
