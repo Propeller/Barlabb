@@ -11,9 +11,21 @@ public class Customer
    */
   public static Customer enters(Pub pub)
   {
-    Customer customer = new Customer();
-    send customer.live_life_in(pub);
-    return customer;
+    return new Customer(pub);
+  }
+  
+  /**
+   * Spawns a new customer with some initial values such as:
+   * - favorite table (… he cares about tables? random maybe?)
+   * - his favorite drink
+   * - is he a heaver?
+   * - how many drinks will he order in total?
+   *
+   * @param Pub pub
+   */
+  public Customer(Pub pub)
+  {
+    send live_life_in(pub);
   }
   
   /**
