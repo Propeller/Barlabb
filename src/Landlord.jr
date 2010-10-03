@@ -1,17 +1,15 @@
 class Landlord
 {
-  // Private non-operations
   private int population = 0;
   
   public Landlord()
   {
-    System.out.println("Landlord alive: " + Pub.clock().getTime());
+    Logger.log("Landlord says “CASH PIÑATA!”");
+    send main_loop(Pub.getInstance());
   }
   
-  private process mainloop
+  private op void main_loop(Pub bar)
   {
-    Pub bar = Pub.getInstance();
-    
     while (true)
     {
       /**
@@ -19,15 +17,14 @@ class Landlord
        */
       inni void bar.hello()
       {
-        System.out.println("HAI U");
-        population++;
+        Logger.log("New customer entered, population: " + ++population);
       }
       [] void bar.goodbye()
       {
-        System.out.println("BAI U");
-        if (--population == 0)
+        Logger.log("Customer leaving, population: " + --population);
+        if (population == 0)
         {
-          System.out.println("OMGWTFBBQ");
+          Logger.log("No more customers.");
           Pub.clock().shutdown();
           break;
         }
