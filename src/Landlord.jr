@@ -48,8 +48,16 @@ class Landlord extends Bartender
       }
       [] Drink pub.order_drink(Drink drink)
       {
-        Logger.log("Landlord: “I’ll serve a " + drink + ".”");
-        reply pub.closed() ? null : prepare(drink);
+        if (pub.closed())
+        {
+          Logger.log("Landlord: GET OUT OF HERE, WE’RE CLOSED!");
+          reply null;
+        }
+        else
+        {
+          Logger.log("Landlord: “I’ll serve a " + drink + ".”");
+          reply prepare(drink);
+        }
       }
     }
   }
