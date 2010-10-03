@@ -24,6 +24,11 @@ class Barmaid
         pub.goodbye();
         break;
       }
+      [] void bar.order_queue()
+      {
+        Logger.log("Landlord: “I serve a customer.“");
+        JR.nap(1000);
+      }
     }
   }
 }
