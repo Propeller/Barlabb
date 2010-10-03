@@ -27,7 +27,7 @@ public class Customer
    */
   
   private int numdrinks = 10;
-  private int favtable;
+  private int favtable = (int)(Math.random() * Pub.TABLES);
   private Drink favdrink;
   private boolean heaver;
   
@@ -64,6 +64,8 @@ public class Customer
       Logger.emote(this + " drinking " + drink + " in " + time + " seconds");
       receive drinking_done();
       Logger.emote(this + " done drinking " + drink);
+      pub.get_table(favtable).put(drink);
+      Logger.emote(this + " has put his " + drink + " on table " + favtable);      
     }
     
     Logger.log(this + ": No more drinks for me, I’m going home!");

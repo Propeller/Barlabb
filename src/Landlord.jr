@@ -33,7 +33,11 @@ class Landlord extends Bartender
       [] void pub.goodbye()
       {
         Logger.log("Landlord: “Goodbye, please come again!” (population: " + --population + ")");
-        if (population == 0)
+        if(population == 1) {
+          Logger.log("Landlord: “Looks like it's only me and you left. Clean up one last time, would ya'?”");
+          send Assistant.last_cleaning();
+        }
+        else if (population == 0)
         {
           Logger.log("Landlord: “Pub is empty. I’m going home!”");
           Logger.log("Pub closed: " + Pub.closed());
