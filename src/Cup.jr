@@ -1,0 +1,4 @@
+class Cup implements Container
+{
+  public int size() { return 2; }
+}

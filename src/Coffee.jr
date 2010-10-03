@@ -1,5 +1,7 @@
-class Coffee extends Drink {
+class Coffee implements Drink {
   public String toString(){
     return "Coffee";
   }
+  public Container container()
+  { return new Cup(); }
 }
