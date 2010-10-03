@@ -1,0 +1,18 @@
+class Bardisk
+{
+  public static op void milk();
+  public static op void chocolate();
+  public static op void coffee();
+  public static op void beer_tap();
+  public static op void glass();
+  public static op void cup();  
+  
+  static {
+    send Bardisk.milk();
+    send chocolate();
+    send coffee();
+    send beer_tap();
+    send glass();  // puben har bara ett glas, tills vidare....
+    send cup();
+  }
+}

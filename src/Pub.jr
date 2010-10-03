@@ -34,13 +34,6 @@ public class Pub implements Runnable
   public op void last_orders();
   public op Drink order_drink(Drink drink);
   
-  public static op void milk();
-  public static op void chocolate();
-  public static op void coffee();
-  public static op void beer_tap();
-  public static op void glass();
-  public static op void cup();  
-  
   // Have the pub closed (read-only)?
   private boolean closed = false;
   public static boolean closed() { return Pub.getInstance().closed; }
@@ -54,13 +47,6 @@ public class Pub implements Runnable
   {
     // For code readability
     Pub pub = this;
-    
-    send milk();
-    send chocolate();
-    send coffee();
-    send beer_tap();
-    send glass();  // puben har bara ett glas, tills vidare....
-    send cup();
     
     new Landlord();
     new Barmaid();
