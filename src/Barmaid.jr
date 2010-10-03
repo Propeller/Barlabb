@@ -1,7 +1,5 @@
 class Barmaid
 {
-  public op void closing_time();
-  
   /**
    * Sets up alarm times (such as when to go home :3).
    */
@@ -10,6 +8,8 @@ class Barmaid
     Pub.clock().setAlarmEndTime(closing_time);
     send main_loop(Pub.getInstance());
   }
+  
+  public op void closing_time();
   
   private op void main_loop(Pub pub)
   {
