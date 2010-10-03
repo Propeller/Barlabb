@@ -42,7 +42,7 @@ public class Customer
   {
     // Assume my favorite drink
     favdrink = Math.random() < 0.33 ? new Beer() : (Math.random() < 0.6 ? new Chocolate() : new Coffee());
-    heaver   = Math.random() < 0.8; // all our customers are students!
+    heaver   = Math.random() < 0.5; // all our customers are students!
     drinks_left = (int) ((Math.random() + 0.2) * 20);
     
     // Greet the Landlord
