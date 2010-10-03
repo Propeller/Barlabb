@@ -9,13 +9,15 @@ class Bartender
   {
     if (drink instanceof Beer)
     {
+      Logger.log(this + ": acquiring glass");
       receive Bardisk.glass();
       receive Bardisk.beer_tap();
       Logger.log(this + ": *bartending (mixing beer)*");
       
       JR.nap(6); // 30 seconds
       
-      // Filling glass
+      Logger.log(this + ": returning beer tap");
+      send Bardisk.beer_tap();
       
       // TEMPORARY
       send Bardisk.glass();
@@ -35,6 +37,7 @@ class Bartender
       Logger.log(this + ": *bartending (mixing " + drink + ")*");
       JR.nap(coffee ? 10 : 4); // 50 seconds
       
+      Logger.log(this + ": returning milk and coffee/chocolate powder");
       send Bardisk.milk();
       if (coffee) send Bardisk.coffee();
       else send Bardisk.chocolate();
