@@ -1,0 +1,24 @@
+class Table {
+  private static void op empty();
+  private static void op full(Drink drink);
+  
+  public static final int SPACES = 1; 
+  
+  static 
+  {
+    for (i=0; i<SPACES; i++) 
+    {
+      send empty();
+    }
+  }
+  
+  public place_drink(Drink drink)
+  {
+    recive empty();
+    send full(drink);
+  }
+  
+  public List<Drink> take_drinks(){
+    
+  }
+}
