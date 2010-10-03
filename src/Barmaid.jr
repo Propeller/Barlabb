@@ -17,7 +17,7 @@ class Barmaid
     {
       inni void closing_time()
       {
-        Logger.log("Barmaid has left the building!");
+        Logger.log("Barmaid says “Closing time. Screw you, I’m going home!”");
         break;
       }
     }
