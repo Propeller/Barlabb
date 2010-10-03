@@ -5,29 +5,43 @@ class Landlord
   public Landlord()
   {
     Logger.log("Landlord: “CASH PIÑATA!”");
-    send main_loop(Pub.getInstance());
+    
+    // Register for last orders
+    Pub pub = Pub.getInstance();
+    pub.clock().setAlarmEndTime(last_orders);
+    
+    send main_loop(pub);
   }
   
-  private op void main_loop(Pub bar)
+  // Clock alerts us, and we alert the bar!
+  public op void last_orders();
+  
+  private op void main_loop(Pub pub)
   {
     while (true)
     {
       /**
        * Person enters/leaves bar (customer/barmaid/assistant)
        */
-      inni void bar.hello()
+      inni void pub.hello()
       {
         Logger.log("Landlord: “Welcome to the pub!” (population: " + ++population + ")");
       }
-      [] void bar.goodbye()
+      [] void pub.goodbye()
       {
         Logger.log("Landlord: “Goodbye, please come again!” (population: " + --population + ")");
         if (population == 0)
         {
           Logger.log("Landlord: “Pub is empty. I’m going home!”");
+          Logger.log("Pub closed: " + Pub.closed());
           Pub.clock().shutdown();
           break;
         }
+      }
+      [] void last_orders()
+      {
+        Logger.log("Landlord: LAST DRINKS SERVING!");
+        send pub.last_orders();
       }
     }
   }
