@@ -4,7 +4,7 @@ class Landlord
   
   public Landlord()
   {
-    Logger.log("Landlord says “CASH PIÑATA!”");
+    Logger.log("Landlord: “CASH PIÑATA!”");
     send main_loop(Pub.getInstance());
   }
   
@@ -17,14 +17,14 @@ class Landlord
        */
       inni void bar.hello()
       {
-        Logger.log("New customer entered, population: " + ++population);
+        Logger.log("Landlord: “Welcome to the pub!” (population: " + ++population + ")");
       }
       [] void bar.goodbye()
       {
-        Logger.log("Customer leaving, population: " + --population);
+        Logger.log("Landlord: “Goodbye, please come again!” (population: " + --population + ")");
         if (population == 0)
         {
-          Logger.log("No more customers.");
+          Logger.log("Landlord: “Pub is empty. I’m going home!”");
           Pub.clock().shutdown();
           break;
         }
