@@ -1,1 +1,5 @@
-class Beer extends Drink {}
+class Beer extends Drink {
+  public String toString(){
+    return "Beer";
+  }
+}
