@@ -16,6 +16,9 @@ class Bartender
       JR.nap(6); // 30 seconds
       
       // Filling glass
+      
+      // TEMPORARY
+      send Bardisk.glass();
     }
     else
     {
@@ -35,6 +38,9 @@ class Bartender
       send Bardisk.milk();
       if (coffee) send Bardisk.coffee();
       else send Bardisk.chocolate();
+      
+      // TEMPORARY
+      send Bardisk.cup();
     }
         
     return drink;
