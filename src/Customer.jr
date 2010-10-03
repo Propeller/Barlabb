@@ -1,13 +1,42 @@
 import edu.ucdavis.jr.*;
 
 public class Customer
-{  
-  private process mainloop
+{
+  /**
+   * Spawns a new customer which enters the pub, pretty much
+   * handling himself.
+   *
+   * @param Pub
+   * @return Customer
+   */
+  public static Customer enters(Pub pub)
   {
-    Bar bar = Bar.getInstance();
-    
-    send bar.hello();
+    return new Customer(pub);
+  }
+  
+  /**
+   * Spawns a new customer with some initial values such as:
+   * - favorite table (… he cares about tables? random maybe?)
+   * - his favorite drink
+   * - is he a heaver?
+   * - how many drinks will he order in total?
+   *
+   * @param Pub pub
+   */
+  public Customer(Pub pub)
+  {
+    send live_life_in(pub);
+  }
+  
+  /**
+   * Make customer start living his life inside the pub.
+   *
+   * @param Pub pub
+   */
+  private op void live_life_in(Pub pub)
+  {
+    send pub.hello();
     JR.nap(3000);
-    send bar.goodbye();
+    send pub.goodbye();
   }
 }

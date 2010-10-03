@@ -33,6 +33,11 @@ public class MyTime implements Cloneable {
   public void increment() {
     value++;
   }
+  
+  public void decrement(int by_value) {
+    if (by_value > value) value = 0;
+    else value -= by_value;
+  }
 
   public MyTime add(MyTime other) {
     value += other.value;

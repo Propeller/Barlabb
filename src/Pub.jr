@@ -1,0 +1,57 @@
+public class Pub implements Runnable
+{
+  public static void main(String[] args)
+  { Pub.getInstance().run(); }
+  
+  // Almighty time… read only for safety against time paradox!
+  private static Clock watch;
+  public static Clock clock()
+  { return watch; }
+  
+  /**
+   * Retrieve the Pub instance, or create a new one if one does not
+   * already exist!
+   */
+  public static Pub instance;
+  public static Pub getInstance()
+  {
+    if (instance == null) instance = new Pub();
+    return instance;
+  }
+  
+  // Set simulation time!
+  public MyTime end_of_the_universe = new MyTime(1, 0, 0);
+  public Pub()
+  {
+    watch = new Clock(20, end_of_the_universe); // Run for an hour
+    watch.setAlarmEndTime(closing_time);
+  }
+  
+  // Population control
+  public op void hello();
+  public op void goodbye();
+  
+  public op void last_orders();
+  public op void order_queue();
+  
+  // Have the pub closed (read-only)?
+  private boolean closed = false;
+  public static boolean closed() { return Pub.getInstance().closed; }
+  private op void closing_time()
+  { closed = true; }
+  
+  /**
+   * Runs the simulation!
+   */
+  public void run()
+  {
+    // For code readability
+    Pub pub = this;
+    
+    new Landlord();
+    new Barmaid();
+    
+    for (int i = 0; i < 5; ++i)
+      Customer.enters(pub);
+  }
+}

@@ -1,0 +1,23 @@
+## Life of a Customer
+1. (new Customer).enters Pub.getInstance()
+2. -> pub.greet()
+3. -> pub.order(new Drink)
+4. -> pub.tables.random.visit()
+5. -> drink.drink() OR last call and heaver ? drink.heave!
+6. -> table.put drink
+7. not finished ? 3)
+8. -> Customer.leaves(pub)
+
+## Life of the Assistant
+1. containers = Assistant.visits pub.tables (set time per container)
+2. containers.wash
+3. pub.containers.refill_with containers
+
+## Clock
+1. last orders
+2. closing time
+
+## Tables
+- X maximum units of space
+- cup: 2 units, glass: 1 units
+- units are atomic, either 2 units taken or none at all

@@ -1,40 +1,47 @@
 class Landlord
 {
-  // Operations
-  public op void hello();
-  public op void goodbye();
-  
-  // Private non-operations
   private int population = 0;
   
   public Landlord()
   {
-    System.out.println("Landlord alive: " + Bar.clock().getTime());
+    Logger.log("Landlord: “CASH PIÑATA!”");
+    
+    // Register for last orders
+    Pub pub = Pub.getInstance();
+    pub.clock().setAlarmEndTime(last_orders);
+    
+    send main_loop(pub);
   }
   
-  private process mainloop
+  // Clock alerts us, and we alert the bar!
+  public op void last_orders();
+  
+  private op void main_loop(Pub pub)
   {
-    Bar bar = Bar.getInstance();
-    
     while (true)
     {
       /**
        * Person enters/leaves bar (customer/barmaid/assistant)
        */
-      inni void bar.hello()
+      inni void pub.hello()
       {
-        System.out.println("HAI U");
-        population++;
+        Logger.log("Landlord: “Welcome to the pub!” (population: " + ++population + ")");
       }
-      [] void bar.goodbye()
+      [] void pub.goodbye()
       {
-        System.out.println("BAI U");
-        if (--population == 0)
+        Logger.log("Landlord: “Goodbye, please come again!” (population: " + --population + ")");
+        if (population == 0)
         {
-          System.out.println("OMGWTFBBQ");
-          Bar.clock().shutdown();
+          Logger.log("Landlord: “Pub is empty. I’m going home!”");
+          Logger.log("Pub closed: " + Pub.closed());
+          Pub.clock().shutdown();
           break;
         }
+      }
+      [] void last_orders()
+      {
+        Logger.log("Landlord: LAST DRINKS SERVING!");
+        send pub.last_orders();
       }
     }
   }
