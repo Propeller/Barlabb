@@ -1,3 +1,5 @@
+import edu.ucdavis.jr.*;
+
 class Bartender
 {
   /**
@@ -7,15 +9,38 @@ class Bartender
   {
     if (drink instanceof Beer)
     {
+      receive Bardisk.beer_tap();
+      Logger.log("*bartending (mixing beer)*");
       
+      JR.nap(6); // 30 seconds
+      
+      // Filling glass
     }
     else if (drink instanceof Coffee)
     {
+      Logger.log("Bartender: acquiring milk");
+      receive Bardisk.milk();
+      Logger.log("Bartender: acquiring coffee");
+      receive Bardisk.coffee();
+      Logger.log("*bartending (mixing coffee)*");
       
+      JR.nap(10); // 50 seconds
+      
+      send Bardisk.milk();
+      send Bardisk.coffee();
     }
     else if (drink instanceof Chocolate)
     {
+      Logger.log("Bartender: acquiring milk");
+      receive Bardisk.milk();
+      Logger.log("Bartender: acquiring chocolate powder");
+      receive Bardisk.chocolate();
+      Logger.log("*mixing chocolate*");
       
+      JR.nap(4); // 20 seconds
+      
+      send Bardisk.milk();
+      send Bardisk.chocolate();
     }
     
     return drink;
