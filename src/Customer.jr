@@ -28,6 +28,7 @@ public class Customer
   
   private int numdrinks = 10;
   private int favtable = (int)(Math.random() * Pub.TABLES);
+  private int drinks_left;
   private Drink favdrink;
   private boolean heaver;
   
@@ -41,13 +42,14 @@ public class Customer
   private op void live_life_in(Pub pub)
   {
     // Assume my favorite drink
-    favdrink = Math.random() < 0.33 ? new Beer() : (Math.random() < 0.6 ? new Coffee() : new Chocolate());
-    heaver   = Math.random() < 0.5;
+    favdrink = Math.random() < 0.33 ? new Beer() : (Math.random() < 0.6 ? new Chocolate() : new Coffee());
+    heaver   = Math.random() < 0.8; // all our customers are students!
+    drinks_left = (int) ((Math.random() + 0.2) * 20);
     
     // Greet the Landlord
     send pub.hello();
     
-    while (--numdrinks > 0)
+    while (drinks_left-- > 0)
     {
       Logger.emote(this + " ordering " + favdrink);
       Drink drink = pub.order_drink(favdrink);
@@ -62,7 +64,20 @@ public class Customer
       pub.clock().setAlarm(drinking_done, new MyTime(time));
       
       Logger.emote(this + " drinking " + drink + " in " + time + " seconds");
-      receive drinking_done();
+      
+      if (heaver && drinks_left > 1)
+      {
+        inni void drinking_done() {}
+        [] void pub.last_orders()
+        {
+          Logger.emote(this + " HEAVING");
+          drinks_left = 1;
+          send pub.last_orders(); // alert the others!
+          continue;
+        }
+      }
+      else receive drinking_done();
+      
       Logger.emote(this + " done drinking " + drink);
       pub.get_table(favtable).put(drink);
       Logger.emote(this + " has put his " + drink + " on table " + favtable);      
