@@ -2,10 +2,6 @@ import edu.ucdavis.jr.*;
 
 public class Customer
 {
-  private int favtable;
-  private Drink favdrink;
-  private boolean heaver;
-  
   /**
    * Spawns a new customer which enters the pub, pretty much
    * handling himself.
@@ -15,7 +11,9 @@ public class Customer
    */
   public static Customer enters(Pub pub)
   {
-    return new Customer(pub);
+    Customer customer = new Customer();
+    send customer.live_life_in(pub);
+    return customer;
   }
   
   /**
@@ -27,22 +25,13 @@ public class Customer
    *
    * @param Pub pub
    */
-  public Customer(Pub pub)
-  {
-    send live_life_in(pub);
-    if(Math.random()<0.33)
-    {
-      favdrink = new Beer();
-    }
-    else if(Math.random()<0.5)
-    {
-      favdrink = new Coffee();
-    }
-    else
-    {
-      favdrink = new Chocolate(); //Yum!
-    }
-  }
+  
+  private int numdrinks = 10;
+  private int favtable;
+  private Drink favdrink;
+  private boolean heaver;
+  
+  public op void drinking_done();
   
   /**
    * Make customer start living his life inside the pub.
@@ -51,11 +40,45 @@ public class Customer
    */
   private op void live_life_in(Pub pub)
   {
+    // Assume my favorite drink
+    favdrink = Math.random() < 0.33 ? new Beer() : (Math.random() < 0.6 ? new Coffee() : new Chocolate());
+    heaver   = Math.random() < 0.5;
+    
+    // Greet the Landlord
     send pub.hello();
-    JR.nap(3000);
-    Drink drink = pub.order_drink(favdrink);
-    Logger.log("Customer: “Ah, "+drink+"! Thx!”");
-    JR.nap(1000);
+    
+    while (--numdrinks > 0)
+    {
+      Logger.emote(this + " ordering " + favdrink);
+      Drink drink = pub.order_drink(favdrink);
+      
+      // null means no more drinks will be served
+      if (drink == null) break;
+      
+      // Drink for specified time
+      int modifier = (int) Math.random() * 120;
+      if (Math.random() < 0.5) modifier = -modifier;
+      MyTime drinking_time = new MyTime(Pub.clock().getTime().getValue() + 4 * 60 * modifier * Pub.time_per_tick);
+      pub.clock().setAlarm(drinking_done, drinking_time);
+      
+      Logger.emote(this + " drinking " + drink);
+      receive drinking_done();
+      Logger.emote(this + " done drinking " + drink);
+    }
+    
+    Logger.log(this + ": No more drinks for me, I’m going home!");
+    
+    // Say Goodbye to the Landlord
     send pub.goodbye();
+  }
+  
+  public String toString()
+  {
+    return "Customer#" + id();
+  }
+  
+  public int id()
+  {
+    return System.identityHashCode(this);
   }
 }
