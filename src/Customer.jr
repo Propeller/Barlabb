@@ -3,7 +3,7 @@ import edu.ucdavis.jr.*;
 public class Customer
 {
   private int favtable;
-  private int favdrink;
+  private Drink favdrink;
   private boolean heaver;
   
   /**
@@ -30,6 +30,18 @@ public class Customer
   public Customer(Pub pub)
   {
     send live_life_in(pub);
+    if(Math.random()<0.33)
+    {
+      favdrink = new Beer();
+    }
+    else if(Math.random()<0.5)
+    {
+      favdrink = new Coffee();
+    }
+    else
+    {
+      favdrink = new Chocolate(); //Yum!
+    }
   }
   
   /**
@@ -41,8 +53,8 @@ public class Customer
   {
     send pub.hello();
     JR.nap(3000);
-    Drink drink = pub.order_drink(new Beer());
-    Logger.log("Customer: “Ah, beer! Thx!”");
+    Drink drink = pub.order_drink(favdrink);
+    Logger.log("Customer: “Ah, "+drink+"! Thx!”");
     JR.nap(1000);
     send pub.goodbye();
   }
