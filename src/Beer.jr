@@ -1,0 +1,1 @@
+class Beer extends Drink {}
