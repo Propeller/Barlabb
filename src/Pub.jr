@@ -23,7 +23,7 @@ public class Pub implements Runnable
   public MyTime end_of_the_universe = new MyTime(1, 0, 0);
   public Pub()
   {
-    watch = new Clock(20, end_of_the_universe); // Run for an hour
+    watch = new Clock(5, end_of_the_universe); // Run for an hour
     watch.setAlarmEndTime(closing_time);
   }
   
