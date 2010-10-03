@@ -4,6 +4,7 @@ public class Pub implements Runnable
   { Pub.getInstance().run(); }
   
   // Almighty time… read only for safety against time paradox!
+  public static int time_per_tick = 5;
   private static Clock watch;
   public static Clock clock()
   { return watch; }
@@ -23,7 +24,7 @@ public class Pub implements Runnable
   public MyTime end_of_the_universe = new MyTime(1, 0, 0);
   public Pub()
   {
-    watch = new Clock(5, end_of_the_universe); // Run for an hour
+    watch = new Clock(time_per_tick, end_of_the_universe); // Run for an hour
     watch.setAlarmEndTime(closing_time);
   }
   

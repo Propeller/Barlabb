@@ -14,7 +14,7 @@ class Bartender
       receive Bardisk.beer_tap();
       Logger.log(this + ": *bartending (mixing beer)*");
       
-      JR.nap(30 * 5); // 30 seconds
+      JR.nap(30 * Pub.time_per_tick); // 30 seconds
       
       Logger.log(this + ": returning beer tap");
       send Bardisk.beer_tap();
@@ -35,7 +35,7 @@ class Bartender
       receive Bardisk.cup();
       
       Logger.log(this + ": *bartending (mixing " + drink + ")*");
-      JR.nap(coffee ? 50 * 5 : 10 * 5); // 50/10 seconds
+      JR.nap((coffee ? 50 : 10 ) * Pub.time_per_tick); // 50/10 seconds
       
       Logger.log(this + ": returning milk and coffee/chocolate powder");
       send Bardisk.milk();
