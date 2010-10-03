@@ -56,12 +56,12 @@ public class Customer
       if (drink == null) break;
       
       // Drink for specified time
-      int modifier = (int) Math.random() * 120;
+      int modifier = (int) (Math.random() * 120);
       if (Math.random() < 0.5) modifier = -modifier;
-      MyTime drinking_time = new MyTime(Pub.clock().getTime().getValue() + 4 * 60 * modifier * Pub.time_per_tick);
-      pub.clock().setAlarm(drinking_done, drinking_time);
+      int time = 4 * 60 + modifier;
+      pub.clock().setAlarm(drinking_done, new MyTime(time));
       
-      Logger.emote(this + " drinking " + drink);
+      Logger.emote(this + " drinking " + drink + " in " + time + " seconds");
       receive drinking_done();
       Logger.emote(this + " done drinking " + drink);
     }
