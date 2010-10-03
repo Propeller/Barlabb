@@ -5,7 +5,7 @@ class Barmaid
   
   public Barmaid()
   {
-    Bar.clock().setAlarmEndTime(timetogohome);
+    Pub.clock().setAlarmEndTime(timetogohome);
   }
   
   private process mainloop

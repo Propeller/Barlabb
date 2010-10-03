@@ -1,20 +1,16 @@
 class Landlord
 {
-  // Operations
-  public op void hello();
-  public op void goodbye();
-  
   // Private non-operations
   private int population = 0;
   
   public Landlord()
   {
-    System.out.println("Landlord alive: " + Bar.clock().getTime());
+    System.out.println("Landlord alive: " + Pub.clock().getTime());
   }
   
   private process mainloop
   {
-    Bar bar = Bar.getInstance();
+    Pub bar = Pub.getInstance();
     
     while (true)
     {
@@ -32,7 +28,7 @@ class Landlord
         if (--population == 0)
         {
           System.out.println("OMGWTFBBQ");
-          Bar.clock().shutdown();
+          Pub.clock().shutdown();
           break;
         }
       }

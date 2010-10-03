@@ -1,7 +1,7 @@
-public class Bar implements Runnable
+public class Pub implements Runnable
 {
   public static void main(String[] args)
-  { Bar.getInstance().run(); }
+  { Pub.getInstance().run(); }
   
   // Almighty time… read only for safety against time paradox!
   private static Clock watch;
@@ -9,13 +9,13 @@ public class Bar implements Runnable
   { return watch; }
   
   /**
-   * Retrieve the Bar instance, or create a new one if one does not already
-   * exist!
+   * Retrieve the Pub instance, or create a new one if one does not
+   * already exist!
    */
-  public static Bar instance;
-  public static Bar getInstance()
+  public static Pub instance;
+  public static Pub getInstance()
   {
-    if (instance == null) instance = new Bar();
+    if (instance == null) instance = new Pub();
     return instance;
   }
   
@@ -28,9 +28,13 @@ public class Bar implements Runnable
    */
   public void run()
   {
+    // For code readability
+    Pub pub = this;
+    
     this.watch = new Clock(10, new MyTime(0, 3, 20));
     new Landlord();
     
-    for (int i = 0; i < 5; ++i) { new Customer(); }
+    for (int i = 0; i < 5; ++i)
+      Customer.enters(pub);
   }
 }
