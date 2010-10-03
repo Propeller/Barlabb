@@ -1,3 +1,5 @@
+import edu.ucdavis.jr.*;
+
 class Landlord
 {
   private int population = 0;
@@ -44,7 +46,7 @@ class Landlord
         Logger.log("Landlord: LAST DRINKS SERVING!");
         send pub.last_orders();
       }
-      [] void bar.order_queue()
+      [] void pub.order_queue()
       {
         Logger.log("Landlord: “I serve a customer.“");
         JR.nap(1000);
