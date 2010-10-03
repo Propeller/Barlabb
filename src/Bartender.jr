@@ -1,0 +1,23 @@
+class Bartender
+{
+  /**
+   * Prepares a drink by fetching appropriate ingredients and mixing!
+   */
+  public Drink prepare(Drink drink)
+  {
+    if (drink instanceof Beer)
+    {
+      
+    }
+    else if (drink instanceof Coffee)
+    {
+      
+    }
+    else if (drink instanceof Chocolate)
+    {
+      
+    }
+    
+    return drink;
+  }
+}
