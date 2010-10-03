@@ -36,7 +36,7 @@ class Landlord extends Bartender
         if (population == 0)
         {
           Logger.log("Landlord: “Pub is empty. I’m going home!”");
-          Logger.log("Pub closed: " + Pub.closed());
+          Logger.log("Game over.");
           Pub.clock().shutdown();
           break;
         }
