@@ -26,7 +26,7 @@ class Bartender
       
       Logger.log(this + ": acquiring milk");
       receive Bardisk.milk();
-      if (coffee) Bardisk.coffee();
+      if (coffee) receive Bardisk.coffee();
       else receive Bardisk.chocolate();
       
       Logger.log(this + ": acquiring cup");
