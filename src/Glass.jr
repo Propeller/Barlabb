@@ -1,1 +1,4 @@
-class Glass extends Container {}
+class Glass implements Container
+{
+  public int size() { return 1; }
+}

@@ -1,1 +1,5 @@
-class Coffee extends Drink {}
+class Coffee implements Drink
+{
+  public Container container()
+  { return new Cup(); }
+}

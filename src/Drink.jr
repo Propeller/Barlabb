@@ -1,1 +1,4 @@
-class Drink {}
+interface Drink 
+{
+  public Container container();
+}
