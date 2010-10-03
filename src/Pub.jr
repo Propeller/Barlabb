@@ -19,6 +19,14 @@ public class Pub implements Runnable
     return instance;
   }
   
+  /**
+   * Spawns the clock.
+   */
+  public Pub()
+  {
+    this.watch = new Clock(10, new MyTime(0, 3, 20));
+  }
+  
   // Operations (channels)
   public op void hello();
   public op void goodbye();
@@ -31,8 +39,8 @@ public class Pub implements Runnable
     // For code readability
     Pub pub = this;
     
-    this.watch = new Clock(10, new MyTime(0, 3, 20));
     new Landlord();
+    new Barmaid();
     
     for (int i = 0; i < 5; ++i)
       Customer.enters(pub);
