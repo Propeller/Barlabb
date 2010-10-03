@@ -1,21 +1,25 @@
 class Barmaid
 {
-  // Operations
-  public op void timetogohome();
+  public op void closing_time();
   
+  /**
+   * Sets up alarm times (such as when to go home :3).
+   */
   public Barmaid()
   {
-    Pub.clock().setAlarmEndTime(timetogohome);
+    Logger.log("Barmaid says “Good morning y’all!'”");
+    Pub.clock().setAlarmEndTime(closing_time);
   }
   
-  private process mainloop
+  private process main_loop
   {
-    while (true)
+    while(true)
     {
-      /**
-       * Serve
-       */
-      // TODO
+      inni void closing_time()
+      {
+        Logger.log("Barmaid has left the building!");
+        break;
+      }
     }
   }
 }
