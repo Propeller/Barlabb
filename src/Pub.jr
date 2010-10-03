@@ -24,12 +24,14 @@ public class Pub implements Runnable
    */
   public Pub()
   {
-    this.watch = new Clock(10, new MyTime(0, 3, 20));
+    this.watch = new Clock(50, new MyTime(0, 3, 20));
   }
   
-  // Operations (channels)
+  // Population control
   public op void hello();
   public op void goodbye();
+  
+  public op void order_queue();
   
   /**
    * Runs the simulation!
