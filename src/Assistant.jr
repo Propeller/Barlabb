@@ -36,14 +36,14 @@ class Assistant
   }
   
   private void clean(Pub pub) {
-    List drinks = new ArrayList<Drink>();
+    List<Container> drinks = new ArrayList<Container>();
     for(int i=0;i<pub.TABLES;i++){
-      drinks.addAll(pub.get_table(i).takeAll());
+      drinks.addAll(pub.get_table(i).clear_table());
     }
     // Wash
     int glasses = 0, cups = 0;
-    for(Drink drink : (List<Drink>)drinks){
-      if (drink.container() instanceof Glass){
+    for(Container drink : drinks){
+      if (drink instanceof Glass){
         glasses++;
         send Bardisk.glass();
       } else {
