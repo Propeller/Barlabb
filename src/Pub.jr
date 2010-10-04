@@ -42,6 +42,7 @@ public class Pub implements Runnable
   public op void last_orders();
   public op Drink order_drink(Drink drink);
   public op void remove_tables();
+  public op void try_spawn_customer();
   
   // Have the pub closed (read-only)?
   private boolean closed = false;
@@ -63,9 +64,25 @@ public class Pub implements Runnable
     
     new Landlord();
     new Barmaid();
-    //new Assistant();
-    // 
-    //for (int i = 0; i < 5; ++i)
-    //  Customer.enters(pub);
+    new Assistant();
+
+    int spawns = 0;
+    double spawn_chance = 0.1;    
+    while ( ! closed)
+    {
+      // Every 1 minutes we try spawning a customer with an increasing chance
+      clock().setAlarm(try_spawn_customer, new MyTime(60));
+      
+      receive try_spawn_customer();
+      if (Math.random() < spawn_chance)
+      {
+        spawns++;
+        spawn_chance = 0.1;
+        Customer.enters(pub);
+      }
+      else spawn_chance += 0.05;
+    }
+    
+    Logger.log("Totally spawned customers: " + spawns);
   }
 }
