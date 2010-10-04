@@ -1,23 +1,16 @@
-## Life of a Customer
-1. (new Customer).enters Pub.getInstance()
-2. -> pub.greet()
-3. -> pub.order(new Drink)
-4. -> pub.tables.random.visit()
-5. -> drink.drink() OR last call and heaver ? drink.heave!
-6. -> table.put drink
-7. not finished ? 3)
-8. -> Customer.leaves(pub)
+Typical output: http://pastie.textmate.org/private/j4p7mkqleleacanhezsga
+NOTE: Statistics is printed to STDERR.
 
-## Life of the Assistant
-1. containers = Assistant.visits pub.tables (set time per container)
-2. containers.wash
-3. pub.containers.refill_with containers
+Everything in this assignment is done through message passing. No polling loops (apart from waiting for a new message once one arrives and is processed).
 
-## Clock
-1. last orders
-2. closing time
+When the Landlord is spawned he requests the bar clock to alert him 10 minutes before closing time (at which he’ll announce to the entire bar that you better order up). He also keeps a population counter by greeting and waving goodbye to each person entering the bar (including his own staff).
 
-## Tables
-- X maximum units of space
-- cup: 2 units, glass: 1 units
-- units are atomic, either 2 units taken or none at all
+When the population reaches 1 the only person left is the assistant (as he leaves last amongst the staff [landlord not included]). He then takes a sweep through all tables and goes home. Once he’s left the bar the Landlord notices the pub is empty and closes the bar.
+
+Orders are taken through a channel, specifying which type of drink it is. The Barmaid and the Landlord (both being Bartenders) will mix the drink and return it back to the customer. We solved potential deadlocks by having binary ingredients (one milk, one coffee, one chocolate powder, one beer tap) and they always acquire them in the same order. Thus, somebody reaching for the milk will never block waiting for the chocolate powder (because the only way that would happen is if somebody else reached for chocolate powder first — which never happens).
+
+The drink is then handed back to the customer. The customer drinks by asking the clock to alert him when his drinking time is up, and also listening for “last orders” call if he’s a heaver. This avoids us having to poll for the “last orders” call.
+
+Once the customer has finished his drink it is placed on the table. We’ve taken care that the table can be filled with a glass (1 unit of space) but not a cup (2 units of space) when there’s only 1 unit of space left. This is done through JR guards in Table.jr.
+
+The assistant cleans the table at regular intervals, sleeping by setting an alarm for when he’s to do his next sweep. He will go through all tables and refill the Bardisk with glasses and cups. And so this process continues.
