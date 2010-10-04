@@ -17,9 +17,9 @@ class Table
     {
       inni List<Container> clear_table()
       {
+        reply containers;
         containers = new ArrayList<Container>();
         available_space = total_space;
-        reply containers;
       }
       [] void put_drink(Drink drink) st (available_space >= drink.container().size())
       {
