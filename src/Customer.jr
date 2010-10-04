@@ -75,7 +75,7 @@ public class Customer
       }
       
       Logger.emote(this + " done drinking " + drink);
-      pub.get_table(favtable).put_drink(drink);
+      call pub.get_table(favtable).put_drink(drink);
       Logger.emote(this + " has put his " + drink + " on table " + favtable);      
     }
     
