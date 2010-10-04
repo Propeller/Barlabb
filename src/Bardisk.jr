@@ -12,7 +12,10 @@ class Bardisk
     send chocolate();
     send coffee();
     send beer_tap();
-    send glass();  // puben har bara ett glas, tills vidare....
-    send cup();
+    for (int i = 0; i < 10; ++i)
+    {
+      send glass();  // puben har bara ett glas, tills vidare....
+      send cup();
+    }
   }
 }

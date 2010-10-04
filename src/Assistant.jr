@@ -31,7 +31,7 @@ class Assistant
       {
         clean(pub);
       }
-      pub.clock().setAlarm(wakeup, new MyTime(15 * 60)); // Workers' union requirement
+      pub.clock().setAlarm(wakeup, new MyTime(5 * 60)); // Workers' union requirement
     }
   }
   
