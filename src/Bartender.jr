@@ -18,6 +18,9 @@ class Bartender
       
       Logger.emote(this + " returning beer tap");
       send Bardisk.beer_tap();
+      
+      // TEMPORARY
+      send Bardisk.glass();
     }
     else
     {

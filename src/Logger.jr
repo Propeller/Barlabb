@@ -13,7 +13,6 @@ class Logger
   
   public static void log(String message)
   {
-    String stamp = Pub.clock().getTime().toString();
-    System.out.println("[" + stamp + "] " + message);
+    System.out.println(message);
   }
 }
