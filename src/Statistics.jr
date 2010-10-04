@@ -1,10 +1,12 @@
+import java.util.*;
+
 class Statistics
 {
   public Statistics()
   { send main_loop(); }
   
-  public static op void ordered_drink(int id);
-  public static op void received_drink(int id);
+  public static op void order_time(int time);
+  private List<Integer> order_times = new ArrayList<Integer>();
   
   private process main_loop
   {
@@ -16,16 +18,23 @@ class Statistics
         send pub.exit();
         break;
       }
-      [] void ordered_drink(int id)
+      [] void order_time(int time)
       {
-      
-      }
-      [] void received_drink(int id)
-      {
-      
+        order_times.add(new Integer(time));
       }
     }
     
-    System.err.println("Hello, world!");
+    System.err.println("Served " + order_times.size() + " orders.");
+    
+    Integer max = 0;
+    Integer min = Integer.MAX_VALUE;
+    Integer total = 0;
+    for (Integer time : order_times)
+    {
+      if (time > max) max = time;
+      if (time < min) min = time;
+      total += time;
+    }
+    System.err.println("max: " + max + ", min: " + min + ", avg: " + (total / order_times.size()));
   }
 }
