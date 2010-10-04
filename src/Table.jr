@@ -2,34 +2,28 @@ import java.util.*;
 
 class Table
 {
-  private static op void empty();
-  private static op void full(Drink drink);
+  private final int total_space = (int) ((Math.random() + 0.6) * 10); // 6-16 spots
+  private int available_space = total_space;
+  private List<Container> containers = new ArrayList<Container>();
   
-  public static final int SPACES = 1; 
+  public op Container[] clear_table();
+  public op void put_drink(Drink drink);
   
-  static 
+  private process main_loop
   {
-    for (int i=0; i<SPACES; i++) 
+    while ( ! Pub.closed())
     {
-      send empty();
+      inni Container[] clear_table()
+      {
+        reply (Container[]) containers.toArray();
+        containers.clear();
+        available_space = total_space;
+      }
+      [] void put_drink(Drink drink) st (available_space >= drink.container().size())
+      {
+        available_space -= drink.container().size();
+        containers.add(drink.container());
+      }
     }
-  }
-  
-  public void put(Drink drink)
-  {
-    receive empty();
-    send full(drink);
-  }
-  
-  public List<Drink> takeAll(){
-    List<Drink> list = new ArrayList();
-    while(full.length() > 0)
-    {
-      Drink drink;
-      receive full(drink);
-      list.add(drink);
-      send empty();
-    }
-    return list;
   }
 }
