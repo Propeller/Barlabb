@@ -8,7 +8,7 @@ class Statistics
   public static op void order_time(int time);
   private List<Integer> order_times = new ArrayList<Integer>();
   
-  private process main_loop
+  private op void main_loop()
   {
     Pub pub = Pub.getInstance();
     while(true)
