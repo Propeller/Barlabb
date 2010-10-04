@@ -40,6 +40,12 @@ class Landlord extends Bartender
         {
           Logger.log("Landlord: “Pub is empty. I’m going home!”");
           Logger.log("Game over.");
+          Logger.log(Bardisk.milk.length()" milk, expected: 1");
+          Logger.log(Bardisk.chocolate.length()" cocolate, expected: 1");
+          Logger.log(Bardisk.coffee.length()" coffee, expected: 1");
+          Logger.log(Bardisk.Beer_tap.length()" beer tap, expected: 1");
+          Logger.log(Bardisk.glass.length()" glasses, expected: 10");
+          Logger.log(Bardisk.cup.length()" cups, expected: 10");
           send pub.exit();
           Pub.clock().shutdown();
           break;
