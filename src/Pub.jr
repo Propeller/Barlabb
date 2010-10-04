@@ -7,7 +7,7 @@ public class Pub implements Runnable
   { Pub.getInstance().run(); }
   
   // Almighty time… read only for safety against time paradox!
-  public static int time_per_tick = 5;
+  public static int time_per_tick = 1;
   private static Clock watch;
   public static Clock clock()
   { return watch; }
@@ -42,6 +42,7 @@ public class Pub implements Runnable
   
   public op void last_orders();
   public op Drink order_drink(Drink drink);
+  public op void remove_tables();
   
   // Have the pub closed (read-only)?
   private boolean closed = false;

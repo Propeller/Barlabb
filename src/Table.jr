@@ -11,7 +11,8 @@ class Table
   
   private process main_loop
   {
-    while ( ! Pub.closed())
+    Pub pub = Pub.getInstance();
+    while (true)
     {
       inni List<Container> clear_table()
       {
@@ -23,6 +24,11 @@ class Table
       {
         available_space -= drink.container().size();
         containers.add(drink.container());
+      }
+      [] void pub.remove_tables()
+      {
+        send pub.remove_tables();
+        break;
       }
     }
   }
