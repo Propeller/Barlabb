@@ -1,3 +1,4 @@
+Typical output: http://pastie.textmate.org/private/j4p7mkqleleacanhezsga
 NOTE: Statistics is printed to STDERR.
 
 Everything in this assignment is done through message passing. No polling loops (apart from waiting for a new message once one arrives and is processed).
