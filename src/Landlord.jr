@@ -41,7 +41,7 @@ class Landlord extends Bartender
         {
           Logger.log("Landlord: “Pub is empty. I’m going home!”");
           Logger.log("Game over.");
-          send pub.remove_tables();
+          send pub.exit();
           Pub.clock().shutdown();
           break;
         }

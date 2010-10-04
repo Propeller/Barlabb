@@ -26,10 +26,10 @@ class Table
         available_space -= drink.container().size();
         containers.add(drink.container());
       }
-      [] void pub.remove_tables()
+      [] void pub.exit()
       {
         Logger.log("Remove ze table");
-        send pub.remove_tables();
+        send pub.exit();
         break;
       }
     }

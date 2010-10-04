@@ -1,0 +1,31 @@
+class Statistics
+{
+  public Statistics()
+  { send main_loop(); }
+  
+  public op void ordered_drink(int id);
+  public op void received_drink(int id);
+  
+  private process main_loop
+  {
+    Pub pub = Pub.getInstance();
+    while(true)
+    {
+      inni void pub.exit()
+      {
+        send pub.exit();
+        break;
+      }
+      [] void ordered_drink(int id)
+      {
+      
+      }
+      [] void received_drink(int id)
+      {
+      
+      }
+    }
+    
+    System.err.println("Hello, world!");
+  }
+}
