@@ -15,10 +15,9 @@ class Assistant
     Logger.log("Assistant: “Good morning, boss!”");
     pub.hello();
     
-    pub.clock().setAlarm(wakeup, new MyTime(0));
-    
     while(true)
     {
+      pub.clock().setAlarm(wakeup, Delays.WORK_BREAK);
       inni void last_cleaning()
       {
         Logger.log("Assistant: “I'll get right to it, boss!”");
@@ -31,7 +30,6 @@ class Assistant
       {
         clean(pub);
       }
-      pub.clock().setAlarm(wakeup, new MyTime(5 * 60)); // Workers' union requirement
     }
   }
   

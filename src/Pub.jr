@@ -24,10 +24,9 @@ public class Pub implements Runnable
   }
   
   // Set simulation time!
-  public MyTime end_of_the_universe = new MyTime(1, 0, 0);
   public Pub()
   {
-    watch = new Clock(time_per_tick, end_of_the_universe); // Run for an hour
+    watch = new Clock(time_per_tick, Delays.CLOSING_TIME);
     watch.setAlarmEndTime(closing_time);
     
     tables = new Table[TABLES];

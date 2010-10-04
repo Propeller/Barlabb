@@ -10,8 +10,7 @@ class Landlord extends Bartender
     
     // Register for last orders
     Pub pub = Pub.getInstance();
-    MyTime last_orders_time = (MyTime) pub.end_of_the_universe.clone();
-    pub.clock().setAlarm(last_orders, last_orders_time.decrement(10 * 60 /* 10 minutes */));
+    pub.clock().setAlarm(last_orders, Delays.CLOSING_TIME.decrement(10 * 60 /* 10 minutes */));
     
     send main_loop(pub);
   }
