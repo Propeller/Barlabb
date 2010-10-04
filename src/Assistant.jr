@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Assistant
 {
   public Assistant()
@@ -5,12 +7,15 @@ class Assistant
     send main_loop(Pub.getInstance());
   }
   
-  public op void last_cleaning();
+  public static op void last_cleaning();
+  public op void wakeup();
   
   private op void main_loop(Pub pub)
   {
     Logger.log("Assistant: “Good morning, boss!”");
     pub.hello();
+    
+    pub.clock().setAlarm(wakeup, new MyTime(0));
     
     while(true)
     {
@@ -24,9 +29,29 @@ class Assistant
       }
       [] void wakeup()
       {
-        clean();
+        clean(pub);
+      }
+      pub.clock().setAlarm(wakeup, new MyTime(15 * 60)); // Workers' union requirement
+    }
+  }
+  
+  private void clean(Pub pub) {
+    List drinks = new ArrayList<Drink>();
+    for(int i=0;i<pub.TABLES;i++){
+      drinks.addAll(pub.get_table(i).takeAll());
+    }
+    // Wash
+    int glasses = 0, cups = 0;
+    for(Drink drink : (List<Drink>)drinks){
+      if (drink.container() instanceof Glass){
+        glasses++;
+        send Bardisk.glass();
+      } else {
+        cups++;
+        send Bardisk.cup();
       }
     }
+    Logger.log("Assistant: “I've cleaned "+glasses+" glasses and "+cups+" cups.”");
   }
   
   

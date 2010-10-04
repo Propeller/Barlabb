@@ -26,8 +26,9 @@ public class Customer
    * @param Pub pub
    */
   
+  private int numdrinks = 10;
+  private int favtable = (int)(Math.random() * Pub.TABLES);
   private int drinks_left;
-  private int favtable;
   private Drink favdrink;
   private boolean heaver;
   
@@ -74,6 +75,8 @@ public class Customer
       }
       
       Logger.emote(this + " done drinking " + drink);
+      pub.get_table(favtable).put(drink);
+      Logger.emote(this + " has put his " + drink + " on table " + favtable);      
     }
     
     Logger.log(this + ": No more drinks for me, I’m going home!");
