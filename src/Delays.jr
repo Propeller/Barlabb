@@ -1,8 +1,8 @@
 class Delays 
 {
-  public static final MyTime     DRINK = new MyTime(     4 * 60), 
-                          GET_RESOURCE = new MyTime(         10),
-                             MIX_DRINK = new MyTime(         30),
-                            WORK_BREAK = new MyTime(     5 * 60),
-                          CLOSING_TIME = new MyTime(6 * 60 * 60);
+  public static final MyTime     DRINK = new MyTime(0, 4, 0), 
+                          GET_RESOURCE = new MyTime(0, 0, 10),
+                             MIX_DRINK = new MyTime(0, 0, 30),
+                            WORK_BREAK = new MyTime(0, 5, 0),
+                          CLOSING_TIME = new MyTime(1, 0, 0);
 }
