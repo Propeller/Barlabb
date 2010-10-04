@@ -52,9 +52,10 @@ public class Customer
     while (drinks_left-- > 0)
     {
       Logger.emote(this + " ordering " + favdrink);
-      MyTime start = pub.clock().getTime();
+      int start = Pub.clock().getTime().getValue();
       Drink drink = pub.order_drink(favdrink);
-      send Statistics.order_time(pub.clock().getTime().compareTo(start));
+      int diff = Pub.clock().getTime().getValue() - start;
+      send Statistics.order_time(diff);
       
       // null means no more drinks will be served
       if (drink == null) break;
