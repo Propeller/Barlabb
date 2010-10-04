@@ -6,17 +6,17 @@ class Table
   private int available_space = total_space;
   private List<Container> containers = new ArrayList<Container>();
   
-  public op Container[] clear_table();
+  public op List<Container> clear_table();
   public op void put_drink(Drink drink);
   
   private process main_loop
   {
     while ( ! Pub.closed())
     {
-      inni Container[] clear_table()
+      inni List<Container> clear_table()
       {
-        reply (Container[]) containers.toArray();
-        containers.clear();
+        reply containers;
+        containers = new ArrayList<Container>();
         available_space = total_space;
       }
       [] void put_drink(Drink drink) st (available_space >= drink.container().size())
