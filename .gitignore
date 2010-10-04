@@ -1,3 +1,4 @@
 *.class
 src/jrGen/
 jr/
+src/statistics.txt
