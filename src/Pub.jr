@@ -1,7 +1,7 @@
 public class Pub implements Runnable
 {
   private Table[] tables;
-  public static final int TABLES = 1;
+  public static final int TABLES = 10;
 
   public static void main(String[] args)
   { Pub.getInstance().run(); }
