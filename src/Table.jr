@@ -27,6 +27,7 @@ class Table
       }
       [] void pub.remove_tables()
       {
+        Logger.log("Remove ze table");
         send pub.remove_tables();
         break;
       }

@@ -64,9 +64,9 @@ public class Pub implements Runnable
     
     new Landlord();
     new Barmaid();
-    new Assistant();
-    
-    for (int i = 0; i < 5; ++i)
-      Customer.enters(pub);
+    // new Assistant();
+    // 
+    // for (int i = 0; i < 5; ++i)
+    //   Customer.enters(pub);
   }
 }
