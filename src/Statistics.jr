@@ -3,8 +3,8 @@ class Statistics
   public Statistics()
   { send main_loop(); }
   
-  public op void ordered_drink(int id);
-  public op void received_drink(int id);
+  public static op void ordered_drink(int id);
+  public static op void received_drink(int id);
   
   private process main_loop
   {
