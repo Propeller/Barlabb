@@ -9,7 +9,7 @@ class Bartender
   {
     if (drink instanceof Beer)
     {
-      Logger.emote(this + " acquiring glass");
+      Logger.emote(this + " trying to acquire glass");
       receive Bardisk.glass();
       receive Bardisk.beer_tap();
       Logger.emote(this + " fixing beer*");
@@ -23,12 +23,12 @@ class Bartender
     {
       boolean coffee = drink instanceof Coffee;
       
-      Logger.emote(this + " acquiring milk");
+      Logger.emote(this + " trying to acquire milk");
       receive Bardisk.milk();
       if (coffee) receive Bardisk.coffee();
       else receive Bardisk.chocolate();
       
-      Logger.emote(this + " acquiring cup");
+      Logger.emote(this + " trying to acquire cup");
       receive Bardisk.cup();
       
       Logger.emote(this + " mixing " + drink + "*");
