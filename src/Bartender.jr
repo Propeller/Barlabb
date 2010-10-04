@@ -1,6 +1,6 @@
 class Bartender
 {
-  private void op wait();
+  private op void wait();
   
   /**
    * Prepares a drink by fetching appropriate ingredients and mixing!
@@ -15,8 +15,8 @@ class Bartender
       receive Bardisk.beer_tap();
       Logger.emote(this + " fixing beer*");
       
-      pub.clock().setAlarm(wait, Delays.MIX_DRINK);
-      recieve wait();
+      Pub.clock().setAlarm(wait, Delays.MIX_DRINK);
+      receive wait();
       
       Logger.emote(this + " returning beer tap");
       send Bardisk.beer_tap();
@@ -30,16 +30,16 @@ class Bartender
       if (coffee) receive Bardisk.coffee();
       else receive Bardisk.chocolate();
 
-      pub.clock().setAlarm(wait, Delays.GET_RESOURCE);
-      recieve wait();
+      Pub.clock().setAlarm(wait, Delays.GET_RESOURCE);
+      receive wait();
       
       Logger.emote(this + " trying to acquire cup");
       receive Bardisk.cup();
       
       Logger.emote(this + " mixing " + drink + "*");
       
-      pub.clock().setAlarm(wait, Delays.MIX_DRINK);
-      recieve wait();
+      Pub.clock().setAlarm(wait, Delays.MIX_DRINK);
+      receive wait();
       
       Logger.log(this + " returning milk and coffee/chocolate powder");
       send Bardisk.milk();
