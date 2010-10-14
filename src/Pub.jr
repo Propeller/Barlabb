@@ -23,18 +23,6 @@ public class Pub implements Runnable
     return instance;
   }
   
-  // Set simulation time!
-  public Pub()
-  {
-    watch = new Clock(time_per_tick, Delays.CLOSING_TIME);
-    watch.setAlarmEndTime(closing_time);
-    
-    tables = new Table[TABLES];
-    for(int i=0; i<TABLES; i++){
-      tables[i] = new Table();
-    }
-  }
-  
   // Population control
   public op void hello();
   public op void goodbye();
@@ -59,6 +47,12 @@ public class Pub implements Runnable
    */
   public void run()
   {
+    watch = new Clock(time_per_tick, Delays.CLOSING_TIME);
+    watch.setAlarmEndTime(closing_time);
+    
+    tables = new Table[TABLES];
+    for(int i=0; i<TABLES; tables[i++] = new Table());
+    
     new Statistics();
     new Landlord();
     new Barmaid();
