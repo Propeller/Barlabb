@@ -1,4 +1,0 @@
-interface Container
-{
-  public int size();
-}

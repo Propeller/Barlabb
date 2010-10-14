@@ -7,7 +7,7 @@ class Bartender
    */
   public Drink prepare(Drink drink)
   {
-    if (drink instanceof Beer)
+    if (drink == Drink.BEER)
     {
       Logger.emote(this + " trying to acquire glass");
       receive Bardisk.glass();
@@ -23,7 +23,7 @@ class Bartender
     }
     else
     {
-      boolean coffee = drink instanceof Coffee;
+      boolean coffee = drink == Drink.COFFEE;
       
       Logger.emote(this + " trying to acquire milk");
       receive Bardisk.milk();

@@ -1,8 +1,0 @@
-class Beer implements Drink
-{
-  public String toString(){
-    return "Beer";
-  }
-  public Container container()
-  { return new Glass(); }
-}

@@ -1,5 +1,0 @@
-class Cup implements Container
-{
-  public String toString() { return "cup"; }
-  public int size() { return 2; }
-}
