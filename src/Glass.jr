@@ -1,5 +1,0 @@
-class Glass implements Container
-{
-  public String toString() { return "glass"; }
-  public int size() { return 1; }
-}

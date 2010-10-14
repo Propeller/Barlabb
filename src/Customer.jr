@@ -42,7 +42,7 @@ public class Customer
   private op void live_life()
   {
     // Assume my favorite drink
-    favdrink = Math.random() < 0.33 ? new Beer() : (Math.random() < 0.6 ? new Chocolate() : new Coffee());
+    favdrink = Math.random() < 0.33 ? Drink.BEER : (Math.random() < 0.6 ? Drink.CHOCOLATE : Drink.COFFEE);
     heaver   = Math.random() < 0.5; // all our customers are students!
     drinks_left = (int) ((Math.random() + 0.2) * 20);
     

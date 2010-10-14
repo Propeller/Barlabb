@@ -41,7 +41,7 @@ class Assistant
     // Wash
     int glasses = 0, cups = 0;
     for(Container drink : drinks){
-      if (drink instanceof Glass){
+      if (drink == Container.GLASS){
         glasses++;
         send Bardisk.glass();
       } else {

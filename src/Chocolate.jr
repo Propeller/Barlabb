@@ -1,8 +1,0 @@
-class Chocolate implements Drink
-{
-  public String toString(){
-    return "Chocolate";
-  }
-  public Container container()
-  { return new Cup(); }
-}
