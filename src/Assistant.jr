@@ -4,39 +4,39 @@ class Assistant
 {
   public Assistant()
   {
-    send main_loop(Pub.getInstance());
+    send main_loop();
   }
   
   public static op void last_cleaning();
   public op void wakeup();
   
-  private op void main_loop(Pub pub)
+  private op void main_loop()
   {
     Logger.log("Assistant: “Good morning, boss!”");
-    pub.hello();
+    Pub.hello();
     
     while(true)
     {
-      pub.clock().setAlarm(wakeup, Delays.WORK_BREAK);
+      Pub.clock().setAlarm(wakeup, Delays.WORK_BREAK);
       inni void last_cleaning()
       {
         Logger.log("Assistant: “I'll get right to it, boss!”");
-        clean(pub);
+        clean();
         Logger.log("Assistant: “Everything is clean now, I go home now.”");
-        pub.goodbye();
+        Pub.goodbye();
         break;
       }
       [] void wakeup()
       {
-        clean(pub);
+        clean();
       }
     }
   }
   
-  private void clean(Pub pub) {
+  private void clean() {
     List<Container> drinks = new ArrayList<Container>();
-    for(int i=0;i<pub.TABLES;i++){
-      drinks.addAll(pub.get_table(i).clear_table());
+    for(int i=0;i<Pub.TABLES;i++){
+      drinks.addAll(Pub.get_table(i).clear_table());
     }
     // Wash
     int glasses = 0, cups = 0;

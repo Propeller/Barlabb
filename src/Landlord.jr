@@ -9,27 +9,26 @@ class Landlord extends Bartender
     Logger.log("Landlord: “CASH PIÑATA!”");
     
     // Register for last orders
-    Pub pub = Pub.getInstance();
-    pub.clock().setAlarm(last_orders, Delays.CLOSING_TIME.decrement(10 * 60 /* 10 minutes */));
+    Pub.clock().setAlarm(last_orders, Delays.CLOSING_TIME.decrement(10 * 60 /* 10 minutes */));
     
-    send main_loop(pub);
+    send main_loop();
   }
   
   // Clock alerts us, and we alert the bar!
   public op void last_orders();
   
-  private op void main_loop(Pub pub)
+  private op void main_loop()
   {
     while (true)
     {
       /**
        * Person enters/leaves bar (customer/barmaid/assistant)
        */
-      inni void pub.hello()
+      inni void Pub.hello()
       {
         Logger.log("Landlord: “Welcome to the pub!” (population: " + ++population + ")");
       }
-      [] void pub.goodbye()
+      [] void Pub.goodbye()
       {
         Logger.log("Landlord: “Goodbye, please come again!” (population: " + --population + ")");
         if(population == 1) {
@@ -40,13 +39,13 @@ class Landlord extends Bartender
         {
           Logger.log("Landlord: “Pub is empty. I’m going home!”");
           Logger.log("Game over.");
-          Logger.log(Bardisk.milk.length()" milk, expected: 1");
-          Logger.log(Bardisk.chocolate.length()" cocolate, expected: 1");
-          Logger.log(Bardisk.coffee.length()" coffee, expected: 1");
-          Logger.log(Bardisk.Beer_tap.length()" beer tap, expected: 1");
-          Logger.log(Bardisk.glass.length()" glasses, expected: 10");
-          Logger.log(Bardisk.cup.length()" cups, expected: 10");
-          send pub.exit();
+          Logger.log(Bardisk.milk.length()+" milk, expected: 1");
+          Logger.log(Bardisk.chocolate.length()+" cocolate, expected: 1");
+          Logger.log(Bardisk.coffee.length()+" coffee, expected: 1");
+          Logger.log(Bardisk.beer_tap.length()+" beer tap, expected: 1");
+          Logger.log(Bardisk.glass.length()+" glasses, expected: 10");
+          Logger.log(Bardisk.cup.length()+" cups, expected: 10");
+          send Pub.exit();
           Pub.clock().shutdown();
           break;
         }
@@ -54,11 +53,11 @@ class Landlord extends Bartender
       [] void last_orders()
       {
         Logger.log("Landlord: LAST DRINKS SERVING!");
-        send pub.last_orders();
+        send Pub.last_orders();
       }
-      [] Drink pub.order_drink(Drink drink)
+      [] Drink Pub.order_drink(Drink drink)
       {
-        if (pub.closed())
+        if (Pub.closed())
         {
           Logger.log("Landlord: GET OUT OF HERE, WE’RE CLOSED!");
           reply null;

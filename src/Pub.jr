@@ -1,10 +1,10 @@
-public class Pub implements Runnable
+public class Pub
 {
-  private Table[] tables;
+  private static Table[] tables;
   public static final int TABLES = 10;
 
   public static void main(String[] args)
-  { Pub.getInstance().run(); }
+  { Pub.run(); }
   
   // Almighty time… read only for safety against time paradox!
   public static int time_per_tick = 1;
@@ -12,40 +12,29 @@ public class Pub implements Runnable
   public static Clock clock()
   { return watch; }
   
-  /**
-   * Retrieve the Pub instance, or create a new one if one does not
-   * already exist!
-   */
-  public static Pub instance;
-  public static Pub getInstance()
-  {
-    if (instance == null) instance = new Pub();
-    return instance;
-  }
-  
   // Population control
-  public op void hello();
-  public op void goodbye();
+  public static op void hello();
+  public static op void goodbye();
   
-  public op void last_orders();
-  public op Drink order_drink(Drink drink);
-  public op void exit();
-  public op void try_spawn_customer();
+  public static op void last_orders();
+  public static op Drink order_drink(Drink drink);
+  public static op void exit();
+  public static op void try_spawn_customer();
   
   // Have the pub closed (read-only)?
-  private boolean closed = false;
-  public static boolean closed() { return Pub.getInstance().closed; }
-  private op void closing_time()
+  private static boolean closed = false;
+  public static boolean closed() { return Pub.closed; }
+  private static op void closing_time()
   { closed = true; }
   
-  public Table get_table (int id){
+  public static Table get_table (int id){
     return tables[id];
   }
   
   /**
    * Runs the simulation!
    */
-  public void run()
+  public static void run()
   {
     watch = new Clock(time_per_tick, Delays.CLOSING_TIME);
     watch.setAlarmEndTime(closing_time);
@@ -70,7 +59,7 @@ public class Pub implements Runnable
       {
         spawns++;
         spawn_chance = 0.1;
-        Customer.enters(this);
+        Customer.enters();
       }
       else spawn_chance += 0.05;
     }

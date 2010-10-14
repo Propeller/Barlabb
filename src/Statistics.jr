@@ -10,12 +10,11 @@ class Statistics
   
   private op void main_loop()
   {
-    Pub pub = Pub.getInstance();
     while(true)
     {
-      inni void pub.exit()
+      inni void Pub.exit()
       {
-        send pub.exit();
+        send Pub.exit();
         break;
       }
       [] void order_time(int time)

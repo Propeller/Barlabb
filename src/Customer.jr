@@ -9,10 +9,10 @@ public class Customer
    * @param Pub
    * @return Customer
    */
-  public static Customer enters(Pub pub)
+  public static Customer enters()
   {
     Customer customer = new Customer();
-    send customer.live_life_in(pub);
+    send customer.live_life();
     return customer;
   }
   
@@ -39,7 +39,7 @@ public class Customer
    *
    * @param Pub pub
    */
-  private op void live_life_in(Pub pub)
+  private op void live_life()
   {
     // Assume my favorite drink
     favdrink = Math.random() < 0.33 ? new Beer() : (Math.random() < 0.6 ? new Chocolate() : new Coffee());
@@ -47,13 +47,13 @@ public class Customer
     drinks_left = (int) ((Math.random() + 0.2) * 20);
     
     // Greet the Landlord
-    send pub.hello();
+    send Pub.hello();
     
     while (drinks_left-- > 0)
     {
       Logger.emote(this + " ordering " + favdrink);
       int start = Pub.clock().getTime().getValue();
-      Drink drink = pub.order_drink(favdrink);
+      Drink drink = Pub.order_drink(favdrink);
       int diff = Pub.clock().getTime().getValue() - start;
       send Statistics.order_time(diff);
       
@@ -61,28 +61,28 @@ public class Customer
       if (drink == null) break;
       
       // Drink for specified time
-      pub.clock().setAlarm(drinking_done, Delays.DRINK);
+      Pub.clock().setAlarm(drinking_done, Delays.DRINK);
       
       Logger.emote(this + " drinking " + drink);
       
       inni void drinking_done() {}
-      [] void pub.last_orders() st (heaver && drinks_left > 1)
+      [] void Pub.last_orders() st (heaver && drinks_left > 1)
       {
         Logger.emote(this + " HEAVING");
         drinks_left = 1;
-        send pub.last_orders(); // alert the others!
+        send Pub.last_orders(); // alert the others!
         continue;
       }
       
       Logger.emote(this + " done drinking " + drink);
-      call pub.get_table(favtable).put_drink(drink);
+      call Pub.get_table(favtable).put_drink(drink);
       Logger.emote(this + " has put his " + drink + " on table " + favtable);      
     }
     
     Logger.log(this + ": No more drinks for me, I’m going home!");
     
     // Say Goodbye to the Landlord
-    send pub.goodbye();
+    send Pub.goodbye();
   }
   
   public String toString()

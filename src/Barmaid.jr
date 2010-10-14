@@ -8,25 +8,25 @@ class Barmaid extends Bartender
   public Barmaid()
   {
     Pub.clock().setAlarmEndTime(closing_time);
-    send main_loop(Pub.getInstance());
+    send main_loop();
   }
   
   public op void closing_time();
   
-  private op void main_loop(Pub pub)
+  private op void main_loop()
   {
     Logger.log("Barmaid: “Good morning y’all!'”");
-    pub.hello();
+    Pub.hello();
     
     while(true)
     {
       inni void closing_time()
       {
         Logger.log("Barmaid: “Closing time. Screw you, I’m going home!”");
-        pub.goodbye();
+        Pub.goodbye();
         break;
       }
-      [] Drink pub.order_drink(Drink drink)
+      [] Drink Pub.order_drink(Drink drink)
       {
         Logger.log("Barmaid: “I’ll serve a " + drink + ".”");
         reply prepare(drink);
