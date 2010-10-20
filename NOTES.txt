@@ -1,0 +1,11 @@
+Pub.getInstance() had a fairly critical bug (tables were created in the Pub constructor, but the tables themselves used Pub.getInstance which in some [lots] of cases would create another pub that would screw up the entire simulation). We fixed this a few hours after submission, so this submission at least is working properly.
+
+In addition to that, we solved the issue of missing glasses and cups (customers were heaving their container, which I found a bit funny…).
+
+As a final note: the code have not been refactored as much as was requested in our rejection comments (classical mistake of one only one person having the updated code during exam week [meaning we both are impossible to get a hold of]). To buy more time, I submitted in panic before the deadline.
+
+To avoid you having to spend too much time trying to find out what have been changed (as this is more of a “half” submission) I’ve attached a diff of the changed code, as well as the .git folder if you would rather inspect the changes yourself.
+
+The diff file is the one named CHANGES.diff.
+
+PS: The reason we don’t have a lot of processes is that we fire them (e.g. main_loop) manually from the constructors.
