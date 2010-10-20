@@ -1,6 +1,3 @@
-Typical output: http://pastie.textmate.org/private/j4p7mkqleleacanhezsga
-NOTE: Statistics is printed to STDERR.
-
 Everything in this assignment is done through message passing. No polling loops (apart from waiting for a new message once one arrives and is processed).
 
 When the Landlord is spawned he requests the bar clock to alert him 10 minutes before closing time (at which he’ll announce to the entire bar that you better order up). He also keeps a population counter by greeting and waving goodbye to each person entering the bar (including his own staff).
