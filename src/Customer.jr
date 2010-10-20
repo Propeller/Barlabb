@@ -71,7 +71,6 @@ public class Customer
         Logger.emote(this + " HEAVING");
         drinks_left = 1;
         send Pub.last_orders(); // alert the others!
-        continue;
       }
       
       Logger.emote(this + " done drinking " + drink);
