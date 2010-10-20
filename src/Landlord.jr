@@ -26,7 +26,8 @@ class Landlord extends Bartender
        */
       inni void Pub.hello()
       {
-        Logger.log("Landlord: “Welcome to the pub!” (population: " + ++population + ")");
+        ++population;
+        Logger.log("Landlord: “Welcome to the pub!” (population: " + population + ")");
       }
       [] void Pub.goodbye()
       {
